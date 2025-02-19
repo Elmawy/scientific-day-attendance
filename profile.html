@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البيانات الشخصية - اليوم العلمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #005C97;
+            --secondary-color: #363795;
+            --accent-color: #00BCD4;
+            --text-color: #2C3E50;
+            --background-color: #F5F7FA;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            animation: slideDown 0.5s ease;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0,92,151,0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(0,92,151,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-group:hover {
+            box-shadow: 0 5px 15px rgba(0,92,151,0.1);
+            transform: translateY(-2px);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .button i {
+            font-size: 18px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logout-btn {
+            background: var(--error-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .attendance-status {
+            text-align: center;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background: #e8f5e9;
+            color: var(--success-color);
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: none;
+            animation: slideUp 0.3s ease;
+            z-index: 1000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .profile-card { padding: 20px; }
+            .logo { height: 40px; }
+            .button-group { flex-direction: column; }
+            .button { width: 100%; justify-content: center; }
+            .logout-btn {
+                position: static;
+                margin: 10px auto;
+                width: fit-content;
+            }
+        }
+
+        .attendance-badge {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        
+        .attendance-badge.present {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .attendance-badge.absent {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .info-group h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            تسجيل الخروج
+        </button>
+        <div class="logo-container">
+            <img src="شعار الجامع.png" alt="شعار الجامع" class="logo">
+            <img src="شعار جمعية اثر الجديد بدون خلفية.png" alt="شعار الجمعية" class="logo">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="welcome-banner">
+                <h2><i class="fas fa-user-circle"></i> حياك الله <span id="welcomeName">-</span></h2>
+                <p>سعدنا بوجودك معنا في اليوم العلمي</p>
+            </div>
+
+            <div class="info-group">
+                <h3><i class="fas fa-info-circle"></i> معلومات المستخدم</h3>
+                <div class="info-item">
+                    <span><i class="fas fa-user"></i> الاسم:</span>
+                    <span id="userName">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-envelope"></i> البريد الإلكتروني:</span>
+                    <span id="userEmail">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-phone"></i> رقم الجوال:</span>
+                    <span id="userPhone">-</span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3><i class="fas fa-info-circle"></i> معلومات إضافية</h3>
+                <div class="info-item">
+                    <span><i class="fas fa-user-circle"></i> الجنس:</span>
+                    <span id="userGender">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-user-tag"></i> نوع المشاركة:</span>
+                    <span id="userType">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-globe"></i> الدولة:</span>
+                    <span id="userCountry">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-qrcode"></i> رمز الحضور:</span>
+                    <span id="userCode">-</span>
+                </div>
+                <div class="info-item">
+                    <span><i class="fas fa-clipboard-check"></i> حالة الحضور:</span>
+                    <span id="userAttendance" class="attendance-badge">-</span>
+                </div>
+            </div>
+
+            <div id="attendanceStatus" class="attendance-status">
+                <i class="fas fa-check-circle"></i> تم تسجيل حضورك بنجاح!
+            </div>
+
+            <div class="button-group">
+                <button id="attendanceBtn" class="button" onclick="markAttendance()">
+                    <i class="fas fa-clipboard-check"></i>
+                    تسجيل الحضور
+                </button>
+                <button id="certificateBtn" class="button" onclick="downloadCertificate()" disabled>
+                    <i class="fas fa-certificate"></i>
+                    تحميل الشهادة
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

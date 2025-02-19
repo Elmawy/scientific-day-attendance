@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اليوم العلمي - مجلس سماع كتاب أخصر المختصرات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #005C97;
+            --secondary-color: #363795;
+            --accent-color: #00BCD4;
+            --text-color: #2C3E50;
+            --background-color: #F5F7FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-color);
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZmZmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNGMEYyRjQiPjwvcmVjdD4KPC9zdmc+');
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8cGF0aCBkPSJNMCAwTDIwIDIwTTIwIDBMMCAyMCIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMiI+PC9wYXRoPgo8L3N2Zz4=');
+            opacity: 0.1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+
+        .motivation {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            text-align: center;
+            color: var(--primary-color);
+            padding: 30px;
+            background: rgba(0, 92, 151, 0.05);
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .detail-item {
+            padding: 25px;
+            background: rgba(0, 92, 151, 0.03);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 92, 151, 0.05);
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .detail-item h3 {
+            color: var(--primary-color);
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .detail-item p {
+            line-height: 1.8;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 92, 151, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            .motivation {
+                font-size: 1.4rem;
+            }
+
+            .logos {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>اليوم العلمي - مجلس سماع كتاب أخصر المختصرات</h1>
+    </header>
+
+    <div class="container">
+        <div class="logos">
+            <img src="شعار الجامع.png" alt="شعار الجامع" class="logo">
+            <img src="شعار جمعية اثر الجديد بدون خلفية.png" alt="شعار الجمعية" class="logo">
+        </div>
+
+        <div class="content-box">
+            <div class="motivation">
+                "طلب العلم فريضة، ومجلس العلم نورٌ للقلب والفكر"
+                <br>
+                نرحب بكم في هذا المجلس المبارك، جعلنا الله وإياكم من أهل العلم والعمل
+            </div>
+
+            <div class="event-details">
+                <div class="detail-item">
+                    <i class="fas fa-mosque"></i>
+                    <h3>المكان</h3>
+                    <p>جامع عائشة الراجحي<br>مكة المكرمة</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <h3>التاريخ</h3>
+                    <p>الأحد ٢٤ شعبان<br>بعد صلاة العصر</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>بتنظيم</h3>
+                    <p>جمعية الدعوة بالعزيزية والعوالي<br>بالتعاون مع<br>جامع عائشة الراجحي</p>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="login.html" class="btn-primary">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
