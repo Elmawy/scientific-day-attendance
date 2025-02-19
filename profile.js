@@ -172,6 +172,6 @@ function logout() {
     localStorage.removeItem('userPhone');
     localStorage.removeItem('attendanceStatus');
     
-    // العودة إلى صفحة تسجيل الدخول
-    window.location.href = 'login.html';
+    // العودة إلى الصفحة الرئيسية 
+    window.location.href = 'index.html';
 }
